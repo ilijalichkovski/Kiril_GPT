@@ -1,7 +1,7 @@
 vocab = set()
 
-x = 'train_mk_1.txt'
-y = 'val_mk_1.txt'
+x = input('Name of the training file: ')
+y = input('Name of the validation file: ')
 
 with open(x, "r", encoding="utf-8") as data:
     text = data.read()

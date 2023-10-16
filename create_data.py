@@ -5,8 +5,10 @@ import re
 import random
 import numpy as np
 
+print('hello')
+
 # path of the uncompressed wikipedia XML file
-xml_file_path = '/content/drive/MyDrive/Datasets/mkwiki-20231001-pages-articles.xml'
+xml_file_path = "C:/Users/ilija/Downloads/mkwiki-20231001-pages-articles/mkwiki-20231001-pages-articles.xml"
 
 num_articles_training = 1000
 num_articles_validation = 200
@@ -15,10 +17,18 @@ num_articles_validation = 200
 tree = etree.parse(xml_file_path)
 root = tree.getroot()
 
+rand_pos = random.randint(0, len(root))
+
+decoded = test = etree.tostring(root[rand_pos], pretty_print=True).decode('utf-8')
+
+print('index = ', rand_pos, '\n',  decoded)
+
+'''
 # create file with training data
 training_indices = np.random.randint(0, len(root), num_articles_training)
 
-with open('train_mk_1.txt', 'w') as f:
+
+with open('train_mk_2.txt', 'w') as f:
 
     for i in training_indices:
 
@@ -43,7 +53,7 @@ with open('train_mk_1.txt', 'w') as f:
 # create file with validation data
 validation_indices = np.random.randint(0, len(root), num_articles_validation)
 
-with open('val_mk_1.txt', 'w') as f:
+with open('val_mk_2.txt', 'w') as f:
 
     for i in validation_indices:
 
@@ -64,3 +74,5 @@ with open('val_mk_1.txt', 'w') as f:
             text_content = re.sub(r'\[\[(.*?)\]\]', r'\1', text_content)
 
             f.write(text_content)
+
+'''
