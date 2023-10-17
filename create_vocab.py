@@ -1,21 +1,23 @@
+from lxml import etree
+import html
+from bs4 import BeautifulSoup
+import re
+import random
+import numpy as np
+
+# path of the uncompressed wikipedia XML file
+transcript_path = r"C:\Users\ilija\Documents\Untitled Folder\transcripts_raw.txt"
+
 vocab = set()
 
-x = input('Name of the training file: ')
-y = input('Name of the validation file: ')
-
-with open(x, "r", encoding="utf-8") as data:
-    text = data.read()
-    characters = set(text)
-    vocab.update(characters)
-
-with open(y, "r", encoding="utf-8") as data:
+with open(transcript_path, "r", encoding="utf-8") as data:
     text = data.read()
     characters = set(text)
     vocab.update(characters)
 
 print(vocab)
 
-vocab_file = 'mk_vocab_1.txt'
+vocab_file = 'TED_vocab.txt'
 
 with open(vocab_file, "w", encoding="utf-8") as vfile:
     for char in vocab:
